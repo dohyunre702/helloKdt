@@ -1,10 +1,9 @@
 package com.springboot.hello.controller;
 
 import domain.Dto.MemberDto;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -29,11 +28,19 @@ public class PutController {
         return sb.toString();
     }
 
-    //실습 5-2. post api_memberDto 객체 가져오기
+    //실습 5-2. memberDto 객체 가져오기
     @RequestMapping(value = "/domain2", method = RequestMethod.PUT)
     public String putRequestParam2(@RequestBody MemberDto memberDto) {
         return memberDto.toString();
     }
     //RequestBody : Body 내용을 지정된 객체에 매핑
 
+
+    //실습 5-3. HttpEntity
+    @PutMapping(value = "/domain3")
+    public ResponseEntity<MemberDto> postMemberDao3(@RequestBody MemberDto memberDto) {
+        return ResponseEntity
+                .status(HttpStatus.ACCEPTED)
+                .body(memberDto);
+    }
 }
