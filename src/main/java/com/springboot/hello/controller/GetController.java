@@ -23,7 +23,7 @@ public class GetController {
         return variable;
     }
 
-    //실습1
+    //실습1.
     @GetMapping(value = "/request1") //request1을 받는 엔드포인트 만들기
     public String getVariable2(@RequestParam String name, @RequestParam String email, @RequestParam String organization) {//requestParam으로 값 3개
         return String.format("%s %s %s", name, email, organization); //받은 값 그대로 리턴
