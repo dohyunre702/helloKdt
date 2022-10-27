@@ -1,7 +1,9 @@
 package com.springboot.hello.controller;
 
+import domain.Dto.MemberDto;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Member;
 import java.util.Map;
 
 @RestController
@@ -41,4 +43,9 @@ public class GetController {
         return "호출이 완료되었습니다.";
     }
 
+    //실습3. Dto객체 활용한 GET요청 생성
+    @GetMapping(value = "/request3")
+    public String getRequestParam(MemberDto memberDto) { //MemberDto 참조변수 선언
+        return memberDto.toString(); //memberDto의 toString 메소드
+    }
 }
