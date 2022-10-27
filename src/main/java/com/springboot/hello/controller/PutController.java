@@ -36,7 +36,7 @@ public class PutController {
     //RequestBody : Body 내용을 지정된 객체에 매핑
 
 
-    //실습 5-3. HttpEntity
+    //실습 5-3. ResponseEntity
     @PutMapping(value = "/domain3")
     public ResponseEntity<MemberDto> postMemberDao3(@RequestBody MemberDto memberDto) {
         return ResponseEntity
