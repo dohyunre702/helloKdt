@@ -14,6 +14,6 @@ public class UserDao {
     }
 
 
-    public void add(UserDao userDao) {
+    public void add(User userDao) {
     }
 }

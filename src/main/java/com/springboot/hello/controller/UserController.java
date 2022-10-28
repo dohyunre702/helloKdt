@@ -22,6 +22,6 @@ public class UserController {
     @GetMapping("/user/")
     public User addAndGet() throws SQLException {
         userDao.add(new User("1","dd","1212"));
-        //return userDao.findById("1");
+
     }
 }
