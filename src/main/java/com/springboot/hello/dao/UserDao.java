@@ -1,5 +1,6 @@
 package com.springboot.hello.dao;
 
+import com.springboot.hello.domain.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -12,4 +13,7 @@ public class UserDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+
+    public void add(UserDao userDao) {
+    }
 }
