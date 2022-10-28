@@ -1,6 +1,6 @@
 package com.springboot.hello.controller;
 
-import domain.Dto.MemberDto;
+import com.springboot.hello.domain.dto.MemberDto;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

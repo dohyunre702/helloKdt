@@ -1,10 +1,9 @@
 package com.springboot.hello.controller;
 
-import domain.Dto.MemberDto;
+import com.springboot.hello.domain.dto.MemberDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Member;
 import java.util.Map;
 
 @RestController
