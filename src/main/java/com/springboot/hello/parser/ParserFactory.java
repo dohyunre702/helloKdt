@@ -10,7 +10,7 @@ public class ParserFactory {
 
     //팩토리에서 조립해주기
     @Bean
-    public ReadlLineContext<Hospital> hospitalReadlLineContext() {
+    public ReadlLineContext<Hospital> hospitalReadLineContext() {
         return new ReadlLineContext<Hospital>(new HospitalParser());
     }
 
