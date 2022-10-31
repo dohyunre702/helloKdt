@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HospitalParserTest {
-
+//org.opentest4j.AssertionFailedError: 에러
 
     @Test
     @DisplayName("csv 1줄을 Hospital로 잘 만드는지 test")
