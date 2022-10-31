@@ -30,6 +30,4 @@ public class Hospital {
     private int totalNumberOfBeds;
     private float totalAreaSizebusinessStatus;
 
-    public void setTotalAreaSize(float parseFloat) {
-    }
 }
