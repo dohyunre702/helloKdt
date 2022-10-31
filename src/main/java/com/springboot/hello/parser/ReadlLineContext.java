@@ -19,7 +19,7 @@ public class ReadlLineContext<T> {
                 new FileReader(filename)
         );
         String str;
-        while((str = reader.readLine()) != null)) {
+        while((str = reader.readLine()) != null) {
             result.add(parser.parse(str));
         }
         reader.close();
