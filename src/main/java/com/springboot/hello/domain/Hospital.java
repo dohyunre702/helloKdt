@@ -28,6 +28,6 @@ public class Hospital {
     private int healthcareProviderCount;
     private int patientRoomCount;
     private int totalNumberOfBeds;
-    private float totalAreaSizebusinessStatus;
+    private float totalAreaSize;
 
 }
