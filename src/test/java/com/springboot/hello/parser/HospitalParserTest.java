@@ -23,16 +23,9 @@ public class HospitalParserTest {
     @Autowired
     ReadlLineContext<Hospital> hospitalReadLineContext;
 
-    @Autowired
+    @Autowired //factory도 없는데 왜 될까?
     HospitalDao hospitalDao;
 
-    @Autowired
-    ApplicationContext context;
-    @BeforeEach
-    void setUp() {
-        this.hospitalReadLineContext = context.getBean(
-                "hospitalReadLineContext", ReadlLineContext.class);
-    }
 
     @Test
     @DisplayName("Hospital이 insert가 잘 되는지")
@@ -40,9 +33,43 @@ public class HospitalParserTest {
         HospitalParser hp = new HospitalParser();
         Hospital hospital = hp.parse(line1);
         hospitalDao.add(hospital);
-    //findall,
     }
 
+    @Test
+    @DisplayName("hospital에서 원하는 id를 찾을 수 있는지")
+    void findById() {
+        HospitalParser hp = new HospitalParser();
+        Hospital hospital = hp.parse(line1);
+        hospitalDao.findById("{id}");
+
+    }
+
+    @Test
+    @DisplayName("다 삭제가 되는지")
+    void deleteAll() {
+        HospitalParser hp = new HospitalParser();
+        Hospital hospital = hp.parse(line1);
+        hospitalDao.deleteAll(hospital);
+
+    }
+
+    @Test
+    @DisplayName("count가 잘 되는지")
+    void getCount() {
+        HospitalParser hp = new HospitalParser();
+        Hospital hospital = hp.parse(line1);
+        hospitalDao.deleteAll(hospital);
+
+    }
+
+    @Autowired
+    ApplicationContext context;
+
+    @BeforeEach
+    void setUp() {
+        this.hospitalReadLineContext = context.getBean(
+                "hospitalReadLineContext", ReadlLineContext.class);
+    }
 
     @Test
     @DisplayName("10만 건 이상 데이터가 파싱되는지")
@@ -62,7 +89,6 @@ public class HospitalParserTest {
     @Test
     @DisplayName("csv 1줄을 Hospital로 잘 만드는지 test")
     void convertToHospital() {
-
         HospitalParser hp = new HospitalParser();
         Hospital hospital = hp.parse(line1);
 

@@ -37,4 +37,24 @@ public class HospitalDao {
 
     }
 
+
+    public int getCount() {
+        String sql = "SELECT count(id) from nation_wide_hospitals;";
+        this.jdbcTemplate.queryForObject(sql, Integer.class);
+        return 0;
+    }
+
+    public void
+    findById(String id) {
+        String sql = "SELECT * FROM users WHERE id = ?";
+        this.jdbcTemplate.queryForObject(sql, Integer.class);
+
+    }
+
+    public void deleteAll(Hospital hospital) {
+        String sql = "DELETE FROM hospital";
+        this.jdbcTemplate.queryForObject(sql, Integer.class);
+
+    }
+
 }
