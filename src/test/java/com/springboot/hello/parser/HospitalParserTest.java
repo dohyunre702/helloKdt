@@ -28,37 +28,22 @@ public class HospitalParserTest {
 
 
     @Test
-    @DisplayName("Hospital이 insert가 잘 되는지")
-    void add() {
+    @DisplayName("Hospital이 insert, select가 잘 되는지")
+    void addAndGet() {
+        hospitalDao.deleteAll();
+        assertEquals(0, hospitalDao.getCount());
         HospitalParser hp = new HospitalParser();
         Hospital hospital = hp.parse(line1);
         hospitalDao.add(hospital);
-    }
+        assertEquals(1, hospitalDao.getCount());
 
-    @Test
-    @DisplayName("count가 잘 되는지")
-    void getCount() {
-        HospitalParser hp = new HospitalParser();
-        Hospital hospital = hp.parse(line1);
-        hospitalDao.deleteAll(hospital);
-    }
-
-    @Test
-    @DisplayName("hospital에서 원하는 id를 찾을 수 있는지")
-    void findById() {
-        HospitalParser hp = new HospitalParser();
-        Hospital hospital = hp.parse(line1);
-        hospitalDao.findById("{id}");
-
-    }
-
-    @Test
-    @DisplayName("다 삭제가 되는지")
-    void deleteAll() {
-        HospitalParser hp = new HospitalParser();
-        Hospital hospital = hp.parse(line1);
-        hospitalDao.deleteAll(hospital);
-
+        Hospital selectedHospital = hospitalDao.findById(hospital.getId());
+        assertEquals(selectedHospital.getId(), hospital.getId());
+        assertEquals(selectedHospital.getOpenServiceName(), hospital.getOpenServiceName());
+        assertEquals(selectedHospital.getHospitalName(), hospital.getHospitalName());
+        //날짜, float
+        assertTrue(selectedHospital.getLicenseDate().isEqual(hospital.getLicenseDate()));
+        assertEquals(selectedHospital.getTotalAreaSize(), hospital.getTotalAreaSize());
     }
 
     @Autowired

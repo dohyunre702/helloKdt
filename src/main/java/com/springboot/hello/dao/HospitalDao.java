@@ -2,6 +2,11 @@ package com.springboot.hello.dao;
 
 import com.springboot.hello.domain.Hospital;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Date;
 
 public class HospitalDao {
 
@@ -38,20 +43,31 @@ public class HospitalDao {
     }
 
 
+
+
     public int getCount() {
         String sql = "SELECT count(id) from nation_wide_hospitals;";
         this.jdbcTemplate.queryForObject(sql, Integer.class);
         return 0;
     }
 
-    public void findById(String id) {
-        String sql = "SELECT * FROM users WHERE id = ?";
-        this.jdbcTemplate.queryForObject(sql, String.class);
+    RowMapper<Hospital> rowMapper = (rs,rowNum) -> {
+        Hospital hospital = new Hospital();
+        hospital.setId(rs.getInt("id"));
+        hospital.setOpenServiceName(rs.getString("open_service_name"));
+        hospital.setHospitalName(rs.getString("hospital_name"));
+        hospital.setLicenseDate(rs.getTimestamp("license_date").toLocalDateTime());
+        //나머지 완성, 이후 테스트 코드 완성하기
+        return hospital;
+
+        };
+
+    public Hospital findById(int id) {
+        return this.jdbcTemplate.queryForObject("SELECT * FROM nation_wide_hospitals where id = ?", rowMapper,id);
     }
 
-    public void deleteAll(Hospital hospital) {
-        String sql = "DELETE FROM hospital";
-        this.jdbcTemplate.queryForObject(sql, String.class);
+    public void deleteAll() {
+        this.jdbcTemplate.update("DELETE FROM nation_wide_hospitals");
     }
 
 }
