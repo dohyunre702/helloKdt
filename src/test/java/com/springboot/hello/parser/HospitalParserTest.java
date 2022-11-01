@@ -36,6 +36,14 @@ public class HospitalParserTest {
     }
 
     @Test
+    @DisplayName("count가 잘 되는지")
+    void getCount() {
+        HospitalParser hp = new HospitalParser();
+        Hospital hospital = hp.parse(line1);
+        hospitalDao.deleteAll(hospital);
+    }
+
+    @Test
     @DisplayName("hospital에서 원하는 id를 찾을 수 있는지")
     void findById() {
         HospitalParser hp = new HospitalParser();
@@ -47,15 +55,6 @@ public class HospitalParserTest {
     @Test
     @DisplayName("다 삭제가 되는지")
     void deleteAll() {
-        HospitalParser hp = new HospitalParser();
-        Hospital hospital = hp.parse(line1);
-        hospitalDao.deleteAll(hospital);
-
-    }
-
-    @Test
-    @DisplayName("count가 잘 되는지")
-    void getCount() {
         HospitalParser hp = new HospitalParser();
         Hospital hospital = hp.parse(line1);
         hospitalDao.deleteAll(hospital);

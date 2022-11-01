@@ -44,17 +44,14 @@ public class HospitalDao {
         return 0;
     }
 
-    public void
-    findById(String id) {
+    public void findById(String id) {
         String sql = "SELECT * FROM users WHERE id = ?";
-        this.jdbcTemplate.queryForObject(sql, Integer.class);
-
+        this.jdbcTemplate.queryForObject(sql, String.class);
     }
 
     public void deleteAll(Hospital hospital) {
         String sql = "DELETE FROM hospital";
-        this.jdbcTemplate.queryForObject(sql, Integer.class);
-
+        this.jdbcTemplate.queryForObject(sql, String.class);
     }
 
 }
