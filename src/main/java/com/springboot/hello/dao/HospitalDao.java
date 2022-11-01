@@ -70,7 +70,6 @@ public class HospitalDao {
         hospital.setTotalNumberOfBeds(rs.getInt("total_number_of_beds"));
         hospital.setTotalAreaSize(rs.getFloat("total_area_size"));
 
-        //나머지 완성, 이후 테스트 코드 완성하기
         return hospital;
 
         };
