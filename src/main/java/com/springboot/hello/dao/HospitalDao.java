@@ -3,11 +3,13 @@ package com.springboot.hello.dao;
 import com.springboot.hello.domain.Hospital;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
 
+@Component
 public class HospitalDao {
 
     private final JdbcTemplate jdbcTemplate;
@@ -39,11 +41,7 @@ public class HospitalDao {
                 hospital.getHealthcareProviderCount(),hospital.getPatientRoomCount(), hospital.getTotalNumberOfBeds(),
                 hospital.getTotalAreaSize()
                 );
-
     }
-
-
-
 
     public int getCount() {
         String sql = "SELECT count(id) from nation_wide_hospitals;";
@@ -81,5 +79,6 @@ public class HospitalDao {
     public void deleteAll() {
         this.jdbcTemplate.update("DELETE FROM nation_wide_hospitals");
     }
+
 
 }

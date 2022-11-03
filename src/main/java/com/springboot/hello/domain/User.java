@@ -1,6 +1,5 @@
 package com.springboot.hello.domain;
 
-
 public class User {
 
     private String id;
@@ -25,5 +24,4 @@ public class User {
         return password;
     }
 
-    //
 }
